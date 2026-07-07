@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Presynaptic PD Genes Across Brain Regions — Cathy Liu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: Georgia, serif; max-width: 720px; margin: 0 auto;
+         padding: 2.5rem 1.5rem 4rem; line-height: 1.65; color: #222; background: #fff; }
+  h1, h2, h3 { font-family: -apple-system, system-ui, sans-serif; }
+  h1 { font-size: 1.45rem; margin-bottom: .2rem; }
+  .byline { font-family: system-ui, sans-serif; font-size: .85rem; color: #777; margin-bottom: 2rem; }
+  h2 { font-size: 1.1rem; margin-top: 2.5rem; border-bottom: 1px solid #eee; padding-bottom: .3rem; }
+  .note { background: #f6f6f4; border-left: 3px solid #999; padding: .8rem 1rem;
+          font-family: system-ui, sans-serif; font-size: .85rem; color: #444; margin: 1.2rem 0; }
+  figure { margin: 1.2rem 0; }
+  figure img { max-width: 100%; display: block; }
+  .fig-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.2rem 0; }
+  .fig-row figure { flex: 1; min-width: 270px; margin: 0; }
+  .fig-row img { width: 100%; }
+  figcaption { font-family: system-ui, sans-serif; font-size: .78rem; color: #777; margin-top: .4rem; }
+  .code-wrap { overflow-x: auto; margin: 1rem 0; }
+  pre { white-space: pre; background: #f8f8f8; padding: 1rem; font-size: .8rem;
+        border-left: 3px solid #ddd; font-family: ui-monospace, Menlo, monospace; }
+  table { border-collapse: collapse; width: 100%; font-size: .88rem; margin: 1rem 0;
+          font-family: system-ui, sans-serif; }
+  td, th { padding: .4rem .7rem; border-bottom: 1px solid #eee; text-align: left; }
+  th { font-weight: 600; color: #555; }
+  a { color: #2255aa; }
+  .meta { font-family: system-ui, sans-serif; font-size: .8rem; color: #888;
+          margin-top: 3rem; border-top: 1px solid #eee; padding-top: 1rem; }
+  .tag { display: inline-block; font-family: system-ui, sans-serif; font-size: .75rem;
+         background: #eef2f8; color: #2255aa; padding: .15rem .5rem;
+         border-radius: 3px; margin-right: .3rem; }
+  .highlight { background: #fff5f5; border-left: 3px solid #c0392b; padding: .6rem 1rem;
+               font-family: system-ui, sans-serif; font-size: .88rem; margin: 1rem 0; }
+  .highlight2 { background: #f0f8ff; border-left: 3px solid #2980b9; padding: .6rem 1rem;
+                font-family: system-ui, sans-serif; font-size: .88rem; margin: 1rem 0; }
+</style>
+</head>
+<body>
+
+<h1>VMAT2, α-Synuclein, GBA, and the Dopamine Corelease Circuit — A Regional Expression Map</h1>
+<div class="byline">Cathy Liu · cathyliu014@gmail.com · personal exploratory project, July 2026</div>
+
+<span class="tag">VMAT2</span>
+<span class="tag">α-synuclein</span>
+<span class="tag">GBA</span>
+<span class="tag">dopamine corelease</span>
+<span class="tag">Parkinson's disease</span>
+<span class="tag">Allen Brain Atlas</span>
+<span class="tag">Python</span>
+
+<p style="margin-top:1.2rem">
+The <a href="https://edwardslab.ucsf.edu/" target="_blank">Edwards lab</a> identified the vesicular
+monoamine transporters and has built a mechanistic framework for how vesicular filling, neurotransmitter
+corelease, and presynaptic protein function — particularly α-synuclein's role in promoting fusion pore
+dilation — go wrong in Parkinson's disease. Two threads from recent lab work I find especially
+compelling: (1) the finding that dopamine neurons in the VTA but not the SNc preferentially
+coreleaase glutamate via VGLUT2, and (2) the mechanistic connection between glucocerebrosidase
+(GBA) and α-synuclein, which the lab has been investigating in ongoing work on GBA–synuclein
+interactions in PD.
+</p>
+
+<p>
+I pulled <em>in situ</em> hybridization expression data from the
+<a href="https://mouse.brain-map.org/" target="_blank">Allen Mouse Brain Atlas</a>
+for eleven presynaptic and PD-relevant genes across eight brain regions — spanning the dopaminergic
+circuit (SNc, VTA, striatum, nucleus accumbens) and reference regions — to map where these proteins
+are co-expressed and what that pattern implies for PD vulnerability and the corelease question.
+</p>
+
+<div class="note">
+<strong>What this is.</strong> Personal exploratory analysis, not novel research.
+All data from the Allen Mouse Brain Atlas (Allen Institute for Brain Science, 2004),
+accessed via the public RMA API. ISH expression energy is a bulk regional metric.
+Analysis and interpretation are mine alone.
+</div>
+
+<h2>Regional expression map — all 11 genes</h2>
+
+<figure>
+  <img src="pd_heatmap.svg?v=1"
+       alt="Heatmap of presynaptic and PD genes across 8 brain regions">
+  <figcaption>ISH expression energy (row-normalized per gene) for 11 presynaptic and PD-relevant
+  genes across 8 brain regions. Substantia nigra and VTA columns highlighted — the two major
+  dopaminergic nuclei with distinct vulnerability profiles in PD. Raw values annotated
+  where expression energy &gt; 1.0.</figcaption>
+</figure>
+
+<h2>SN vs VTA: corelease, GBA, and vulnerability</h2>
+
+<figure>
+  <img src="corelease.svg?v=1"
+       alt="Bar chart comparing SN vs VTA expression of 6 key PD genes">
+  <figcaption>Raw ISH expression energy in substantia nigra (solid) vs VTA (pale outline) for
+  six key genes. The VGLUT2 (Slc17a6) asymmetry — higher in VTA than SN — captures the
+  corelease specificity identified in the Edwards lab's work. Th and Gba co-peak in SN,
+  pointing to GBA's concentration in the most PD-vulnerable dopamine neurons.</figcaption>
+</figure>
+
+<h2>What the data shows</h2>
+
+<div class="highlight">
+<strong>GBA (Gba) and TH (Th) co-peak in substantia nigra.</strong>
+Gba shows highest expression in the substantia nigra (0.057, co-localized with Th at 2.32) —
+placing glucocerebrosidase at highest concentration in the very dopamine neurons that degenerate
+in PD. GBA loss-of-function is the most common genetic PD risk factor, and the co-distribution
+of GBA and TH in SNc makes sense of that epidemiology: GBA dysfunction would impair lysosomal
+clearance of α-synuclein specifically in the neurons where it is most needed. The lab's current
+focus on the GBA–synuclein interaction in PD pathogenesis is directly legible in this expression pattern.
+</div>
+
+<div class="highlight2">
+<strong>VGLUT2 (Slc17a6) is enriched in VTA relative to SN (6.43 vs 1.21).</strong>
+This asymmetry captures the corelease phenomenon the Edwards lab has studied: VTA dopamine
+neurons preferentially express VGLUT2 and coreleaase glutamate alongside dopamine, while
+SNc neurons are more purely dopaminergic. The co-expression of VMAT2 (Slc18a2) with VGLUT2
+in VTA — and the synergistic vesicle-filling mechanism the lab has characterized — would
+thus be particularly active in VTA circuits, with distinct implications for the two
+dopaminergic projections (mesolimbic vs nigrostriatal) in terms of both physiology and
+PD vulnerability.
+</div>
+
+<ul>
+<li>
+<strong>VMAT2 (Slc18a2) peaks in dorsal raphe (8.72)</strong>, the serotonergic nucleus —
+consistent with VMAT2's role as the shared vesicular transporter for all monoamines.
+The original selection of VMAT2 using MPP+ resistance established dopaminergic neurodegeneration
+as a vesicular transport problem; the high raphe expression is a reminder that the same
+vulnerability axis applies to the serotonergic system.
+</li>
+
+<li>
+<strong>γ-synuclein (Sncg) peaks in substantia nigra (14.28)</strong> — the highest
+expression of any synuclein family member in that region. α-synuclein (Snca) is broadly
+expressed at low levels, consistent with its ubiquitous presynaptic role. The SN enrichment
+of γ-synuclein raises the question of whether it interacts with or competes with α-synuclein
+at dopaminergic terminals — a presynaptic competition that could modulate PD pathogenesis.
+</li>
+
+<li>
+<strong>DAT (Slc6a3) is highest in VTA (2.76)</strong>, consistent with the mesolimbic
+system's dense dopamine reuptake machinery. DAT levels determine cytosolic dopamine exposure
+— high DAT activity both recaptures dopamine from the synapse and produces cytosolic dopamine
+if VMAT2 is overwhelmed, directly relevant to oxidative stress models of SN degeneration.
+</li>
+</ul>
+
+<h2>Why this connects to the lab's work</h2>
+<ul>
+<li>
+The Edwards lab's current work on GBA and α-synuclein in PD centers on understanding
+how these two proteins interact at the presynaptic terminal and in lysosomes. The regional
+co-expression map I've built here places that interaction most prominently in the substantia
+nigra — which is precisely where PD pathology begins. I would like to contribute to the
+experimental side of this question, both in terms of biochemical assays and in terms of
+computational analysis of the datasets that follow from them.
+</li>
+<li>
+The corelease story is one I find particularly interesting from a mechanistic standpoint:
+the synergistic vesicle-filling between VMAT2 and VGLUT2, and the distinct vesicle populations
+that recycle through different mechanisms, raises questions about how α-synuclein's influence on
+pore dilation interacts with the co-release machinery specifically in VTA vs SNc neurons.
+</li>
+<li>
+My background combines molecular and cell biology wet lab skills with computational data
+analysis. I think my combination of practical lab experience and computational background
+is where I can be most useful to your lab.
+</li>
+</ul>
+
+<h2>Methods</h2>
+<p>
+Data retrieved July 2026. Allen Mouse Brain Atlas (Allen Institute for Brain Science, 2004),
+in situ hybridization, adult mouse (P56), via RMA API at
+<code>api.brain-map.org/api/v2/data/query.json</code>.
+Structures: Substantia nigra (id 374), VTA (749), Caudoputamen (672),
+Nucleus accumbens (56), Isocortex (315), Hippocampus (1089),
+Locus coeruleus (372), Dorsal raphe (872).
+Expression metric: <em>expression_energy</em> from StructureUnionize
+(sagittal ISH preferred; first dataset returned per gene).
+Figures generated with pure Python (SVG). Code:
+<a href="fetch_data.py">fetch_data.py</a>,
+<a href="make_figures.py">make_figures.py</a>.
+Raw data: <a href="expression.tsv">expression.tsv</a>.
+</p>
+
+<div class="meta">
+Cathy Liu — cathyliu014@gmail.com | 415-216-3799<br>
+<a href="https://liuzhitong330.github.io/tvb-llm-robust-neurostim/" target="_blank">Epilepsy neurostimulation project</a> ·
+<a href="https://arxiv.org/abs/2606.04339" target="_blank">arXiv:2606.04339</a>
+</div>
+
+</body>
+</html>
