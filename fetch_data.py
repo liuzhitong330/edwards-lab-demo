@@ -35,7 +35,7 @@ STRUCTURES = {
     "Nuc_accumbens": 56,
     "Isocortex":    315,
     "Hippocampus":  1089,
-    "Locus_coer":   372,
+    "Locus_coer":   147,
     "Dorsal_raphe": 872,
 }
 
